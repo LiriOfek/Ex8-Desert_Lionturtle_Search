@@ -12,6 +12,10 @@ Purpose: This file find the index of requested number in given array
 #define ELEMENT_NOT_IN_ARRAY (-1)
 #define MIDDLE (2)
 #define ONE (1)
+#define ENTER_REQUESTED_NUMBER ("Enter the number you want to find its index in the array: ")
+#define GET_INTEGER ("%d")
+#define STRING_INDEX_OF_REQUESTED_NUMBER ("The index of number %d in the array is: %d\n")
+#define STRING_INDEX_NOT_IN_ARRAY ("The number %d is not in the array\n")
 
 int binary_search_of_index(int numbers_array[SIZE],
 	int start_index,
@@ -68,5 +72,48 @@ int binary_search_of_index(int numbers_array[SIZE],
 	/*the element is not in the array*/
 	else {
 		return ELEMENT_NOT_IN_ARRAY;
+	}
+}
+
+void main() {
+	/********************************************************\
+	* Function name - main
+	*
+	* Function Purpose - get number from the user and
+	*					 run the function that check the
+	*					 index of the number in a given array
+	*
+	* Parameters - no Input/Output parameters
+	*
+	* Return Value - there isn't return value
+	*
+	* Side Effects - this function has no side effects
+	*
+	* Semantics - get number from the user and
+	*			  run the function that check the
+	*			  index of the number in a given array
+	*
+	* Author - Liri
+	\********************************************************/
+	int numbers_array[SIZE] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int index_of_requested_number = INITIAL_INDEX;
+	int requested_number = INITIAL_INDEX;
+
+	printf(ENTER_REQUESTED_NUMBER);
+	scanf_s(GET_INTEGER, &requested_number);
+
+	index_of_requested_number = binary_search_of_index(numbers_array,
+		INITIAL_INDEX,
+		SIZE - 1,
+		requested_number);
+
+	if (ELEMENT_NOT_IN_ARRAY != index_of_requested_number) {
+		printf(STRING_INDEX_OF_REQUESTED_NUMBER,
+			requested_number,
+			index_of_requested_number);
+	}
+	else {
+		printf(STRING_INDEX_NOT_IN_ARRAY,
+			requested_number);
 	}
 }
